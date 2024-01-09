@@ -33,14 +33,8 @@ fun FundsListItem(
             text = Funds.schemeName,
             style = MaterialTheme.typography.h4,
             color = Color.Black,
-            overflow = TextOverflow.Ellipsis
-        )
-        Text(
-            text = Funds.schemeCode.toString(),
-            style = MaterialTheme.typography.body1,
-            color = Color.Blue,
-            textAlign = TextAlign.End,
-            modifier = Modifier.align(Alignment.Bottom)
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier
         )
     }
 }

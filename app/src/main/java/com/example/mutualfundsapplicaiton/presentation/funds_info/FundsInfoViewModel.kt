@@ -22,7 +22,6 @@ class FundsInfoViewModel @Inject constructor(
     val fundsInfo: State<FundsInfoState> = _fundsInfo
 
     init {
-        //getFundsInfo(100037)
         savedStateHandle.get<String>(Constants.PARAM_SCHEME_CODE)?.let { schemeCode ->
             getFundsInfo(schemeCode.toInt())
         }
@@ -35,7 +34,7 @@ class FundsInfoViewModel @Inject constructor(
                     _fundsInfo.value = FundsInfoState(isLoading = false, fundsInfo = res.data)
                 }
                 is Resource.Error -> {
-                    _fundsInfo.value = FundsInfoState(error = res.message.toString())
+                    _fundsInfo.value = FundsInfoState(isLoading = false, error = res.message.toString())
                 }
                 is Resource.Loading -> TODO()
             }

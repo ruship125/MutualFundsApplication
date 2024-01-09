@@ -1,6 +1,7 @@
 package com.example.mutualfundsapplicaiton.presentation.funds_info.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,23 +16,28 @@ fun InfoItem(
         modifier = Modifier.fillMaxHeight()
     ) {
         Text(
-            text = info.meta.scheme_code.toString()
+            text = "Schema Code: " + info.meta.scheme_code.toString(),
+            style = MaterialTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            text = info.meta.scheme_category
+            text = "Name: " + info.meta.scheme_name,
+            style = MaterialTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            text = info.meta.scheme_name
+            text = "Category: " + info.meta.scheme_category,
+            style = MaterialTheme.typography.subtitle2
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            text = info.meta.scheme_type
+            text = "Type: " + info.meta.scheme_type,
+            style = MaterialTheme.typography.subtitle2
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
-            text = info.meta.fund_house
+            text = "Fund house: " + info.meta.fund_house,
+            style = MaterialTheme.typography.subtitle2
         )
         Spacer(modifier = Modifier.height(25.dp))
     }

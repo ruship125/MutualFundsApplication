@@ -28,9 +28,6 @@ class MutualFundsRepositoryImpl @Inject constructor(
         } catch (e : HttpException) {
             e.printStackTrace()
             Resource.Error("Check Internet Connection")
-        } catch (e : SSLHandshakeException) {
-            e.printStackTrace()
-            Resource.Error("Problem with certification")
         }
     }
 
