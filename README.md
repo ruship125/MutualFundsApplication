@@ -1,6 +1,6 @@
 
 <br />
-  <img src="img/banner.png" align="center"/>
+  <img src="img/Banner.png" align="center"/>
   <h1 align="center"></h1>
   
 
