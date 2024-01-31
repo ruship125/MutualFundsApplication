@@ -8,11 +8,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.security.SecureRandom
-import java.security.cert.X509Certificate
 import javax.inject.Singleton
 import javax.net.ssl.*
 
@@ -30,7 +27,6 @@ object AppModule{
             .build()
             .create(MFapi::class.java)
     }
-
 
     @Provides
     @Singleton

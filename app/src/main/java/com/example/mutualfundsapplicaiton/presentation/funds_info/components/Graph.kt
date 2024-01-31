@@ -1,6 +1,5 @@
 package com.example.mutualfundsapplicaiton.presentation.funds_info.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -11,7 +10,7 @@ import com.example.mutualfundsapplicaiton.domain.model.FundsInfo
 import com.madrapps.plot.line.DataPoint
 import com.madrapps.plot.line.LineGraph
 import com.madrapps.plot.line.LinePlot
-import java.text.SimpleDateFormat
+import com.example.mutualfundsapplicaiton.common.Constants.GRAPH_HEIGHT
 
 @Composable
 fun Graph(
@@ -21,14 +20,14 @@ fun Graph(
 
     //create Datapoint
 //    val date_dp = mutableListOf<DataPoint>()
-    val nav_dp = mutableListOf<DataPoint>()
+    val navData = mutableListOf<DataPoint>()
 
     var idx = 0
 
     data.forEach { i ->
 //        val date = SimpleDateFormat("dd-MM-yyyy").parse(i.date).time / 1000
 //        date_dp.add(idx, DataPoint(idx.toFloat(), date.toFloat()))
-        nav_dp.add(idx, DataPoint(idx.toFloat(), i.nav.toFloat()))
+        navData.add(idx, DataPoint(idx.toFloat(), i.nav.toFloat()))
         idx += 1
     }
 
@@ -37,7 +36,7 @@ fun Graph(
         plot = LinePlot(
             listOf(
                 LinePlot.Line(
-                    nav_dp,
+                    navData,
                     LinePlot.Connection(Color.Blue, 2.dp),
                     LinePlot.Intersection(Color.Blue, 5.dp),
                     LinePlot.Highlight(Color.Red, 5.dp),
@@ -48,12 +47,12 @@ fun Graph(
             xAxis = LinePlot.XAxis(
                 unit = 1f,
                 roundToInt = false,
-                steps = nav_dp.size),
+                steps = navData.size),
             yAxis = LinePlot.YAxis(steps = 3, roundToInt = true),
             paddingRight = 8.dp
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
+            .height(GRAPH_HEIGHT.dp)
     )
 }

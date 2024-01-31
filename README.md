@@ -1,6 +1,6 @@
 
 <br />
-  <img src="img/Banner.png" align="center"/>
+  <img src="img/banner.png" align="center"/>
   <h1 align="center"></h1>
   
 
@@ -26,6 +26,7 @@
 * [About the Project](#about-the-project)
 * [Features](#features)
 * [Architecture](#architecture)
+* [Future Improvements](#future-improvements)
 * [Environment Setup](#requirements)
 * [Contact](#contact)
 
@@ -85,7 +86,20 @@ Some of Important one are listed below:
     - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - Perform actions in response to a change in the lifecycle status of another component, such as activities and fragments.
     - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Designed to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows data to survive configuration changes such as screen rotations.
 
-  
+
+## Future Improvements
+
+### Kotlin Multi-Module
+
+The project can be improved further by adopting the Kotlin Multi-Module concept. This approach allows us to divide the project into multiple modules, each with its own set of responsibilities. This has several benefits:
+
+- **Separation of Concerns**: Each module focuses on a single aspect of the application, making the codebase easier to understand and maintain.
+- **Faster Build Times**: Changes in one module do not require other modules to be recompiled, resulting in faster build times.
+- **Reusability**: Common functionality can be extracted into a shared module and reused across multiple modules.
+- **Improved Testing**: Modules can be tested independently, making it easier to identify and fix bugs.
+
+To implement this, we can start by identifying logical divisions in the application (such as `data`, `domain`, and `presentation` layers in Clean Architecture) and create a separate module for each.
+
 
 ## Environment Setup
   - Android Studio ```Bumblebee (2021.1.1)```  version.

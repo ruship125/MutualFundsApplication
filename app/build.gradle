@@ -27,6 +27,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -34,7 +37,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
     buildFeatures {
         compose true
@@ -95,14 +97,9 @@ dependencies {
     //Graph
     implementation 'com.github.madrapps:plot:0.1.2'
 
-    testImplementation 'org.mockito:mockito-core:2.11.0'
+    //For Unit Testing
     testImplementation 'android.arch.core:core-testing:1.1.1'
-    testImplementation "com.google.truth:truth:1.1"
-    // For Robolectric tests.
-    testImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
-    // For instrumented tests.
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
-    // ...with Kotlin.
-    kaptTest("com.google.dagger:hilt-android-compiler:2.40.5")
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1"
+    testImplementation "io.mockk:mockk:1.12.0"
 
 }

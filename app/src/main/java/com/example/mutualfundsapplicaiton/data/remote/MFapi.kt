@@ -1,7 +1,7 @@
 package com.example.mutualfundsapplicaiton.data.remote
 
-import com.example.mutualfundsapplicaiton.data.remote.Dto.FundsInfoDto
-import com.example.mutualfundsapplicaiton.data.remote.Dto.FundsListDto
+import com.example.mutualfundsapplicaiton.data.remote.dto.FundsInfoDto
+import com.example.mutualfundsapplicaiton.data.remote.dto.FundsListDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 

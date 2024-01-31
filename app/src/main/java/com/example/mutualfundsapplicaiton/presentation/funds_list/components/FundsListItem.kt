@@ -8,13 +8,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.mutualfundsapplicaiton.domain.model.FundsList
+import com.example.mutualfundsapplicaiton.common.Constants.FUND_LIST_ITEM_PADDING
 
 
 @Composable
@@ -26,7 +25,7 @@ fun FundsListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick(Funds) }
-            .padding(20.dp),
+            .padding(FUND_LIST_ITEM_PADDING.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(

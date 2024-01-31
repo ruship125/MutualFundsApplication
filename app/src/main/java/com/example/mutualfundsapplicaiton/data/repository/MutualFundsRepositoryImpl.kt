@@ -1,47 +1,42 @@
 package com.example.mutualfundsapplicaiton.data.repository
 
 import com.example.mutualfundsapplicaiton.common.Resource
-import com.example.mutualfundsapplicaiton.data.remote.Dto.toFundsInfo
-import com.example.mutualfundsapplicaiton.data.remote.Dto.toFundsList
+import com.example.mutualfundsapplicaiton.data.remote.dto.toFundsInfo
+import com.example.mutualfundsapplicaiton.data.remote.dto.toFundsList
 import com.example.mutualfundsapplicaiton.data.remote.MFapi
 import com.example.mutualfundsapplicaiton.domain.model.FundsInfo
 import com.example.mutualfundsapplicaiton.domain.model.FundsList
 import com.example.mutualfundsapplicaiton.domain.repository.MutualFundsRepository
-import retrofit2.HttpException
+import com.example.mutualfundsapplicaiton.common.Constants.IOExceptionMessage
+import com.example.mutualfundsapplicaiton.common.Constants.ErrorMessage
 import java.io.IOException
 import javax.inject.Inject
-import javax.net.ssl.SSLHandshakeException
 
 
 class MutualFundsRepositoryImpl @Inject constructor(
     private val api: MFapi
 ): MutualFundsRepository {
 
-    override suspend fun getFundsList() : Resource<List<FundsList>> {
-        Resource.Loading(true)
+    private suspend fun <T> callApi(apiCall: suspend () -> T): Resource<T> {
         return try {
-            val result = api.getFundsList()
-            Resource.Success(result.map { it.toFundsList() })
+            val result = apiCall.invoke()
+            Resource.Success(result)
         } catch (e : IOException) {
             e.printStackTrace()
-            Resource.Error("Couldn't load data, try again")
-        } catch (e : HttpException) {
+            Resource.Error(IOExceptionMessage)
+        } catch (e: Exception) {
             e.printStackTrace()
-            Resource.Error("Check Internet Connection")
+            Resource.Error(ErrorMessage)
         }
     }
 
-    override suspend fun getFundsInfo(schemeCode : Int) : Resource<FundsInfo> {
-        Resource.Loading(true)
-        return try {
-            val result = api.getFundsInfo(schemeCode)
-            Resource.Success(result.toFundsInfo())
-        } catch (e : IOException) {
-            e.printStackTrace()
-            Resource.Error("Couldn't load data, try again")
-        } catch (e : HttpException) {
-            e.printStackTrace()
-            Resource.Error("Check Internet Connection")
-        }
+    override suspend fun getFundsList() : Resource<List<FundsList>> {
+        return callApi { api.getFundsList().map { it.toFundsList() } }
     }
+
+
+    override suspend fun getFundsInfo(schemeCode : Int) : Resource<FundsInfo> {
+        return callApi { api.getFundsInfo(schemeCode).toFundsInfo() }
+    }
+
 }

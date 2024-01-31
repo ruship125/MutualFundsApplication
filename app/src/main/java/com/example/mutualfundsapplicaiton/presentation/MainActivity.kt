@@ -7,13 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.mutualfundsapplicaiton.presentation.funds_list.FundsListScreen
-import com.example.mutualfundsapplicaiton.presentation.funds_info.FundsInfoScreen
-import com.example.mutualfundsapplicaiton.presentation.screen.Screen
 import com.example.mutualfundsapplicaiton.presentation.theme.MutualFundsApplicaitonTheme
+import com.example.mutualfundsapplicaiton.presentation.navigation.NavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,22 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = Screen.FundsListScreen.route
-                    ){
-                        composable(
-                            route = Screen.FundsListScreen.route
-                        ){
-                            FundsListScreen(navController = navController)
-                        }
-                        composable(
-                            route = Screen.FundsInfoScreen.route + "/{schemeCode}"
-                        ){
-                            FundsInfoScreen()
-                        }
-                    }
+                    NavGraph()
                 }
             }
         }
